@@ -5851,3 +5851,72 @@ version
 [30004] - Gracefully shutting down workers...
 [30004] === puma shutdown: 2018-05-06 16:31:35 +0000 ===
 [30004] - Goodbye!
+=== puma startup: 2018-05-06 12:49:17 -0400 ===
+[5554] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[5550] - Worker 0 (pid: 5554) booted, phase: 0
+[5550] - Gracefully shutting down workers...
+[5550] === puma shutdown: 2018-05-06 12:51:03 -0400 ===
+[5550] - Goodbye!
+=== puma startup: 2018-05-06 17:42:19 -0400 ===
+[11913] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[11909] - Worker 0 (pid: 11913) booted, phase: 0
+[11909] - Gracefully shutting down workers...
+[11909] === puma shutdown: 2018-05-06 17:44:52 -0400 ===
+[11909] - Goodbye!
+=== puma startup: 2018-05-06 17:49:49 -0400 ===
+[13426] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[13422] - Worker 0 (pid: 13426) booted, phase: 0
+[13422] - Gracefully shutting down workers...
+[13422] === puma shutdown: 2018-05-06 17:50:21 -0400 ===
+[13422] - Goodbye!
+=== puma startup: 2018-05-06 17:51:31 -0400 ===
+[13707] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[13705] - Worker 0 (pid: 13707) booted, phase: 0
+[13705] - Gracefully shutting down workers...
+[13705] === puma shutdown: 2018-05-06 17:53:13 -0400 ===
+[13705] - Goodbye!
+=== puma startup: 2018-05-07 19:32:05 -0400 ===
+[16400] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[16396] - Worker 0 (pid: 16400) booted, phase: 0
+[16396] - Gracefully shutting down workers...
+[16396] === puma shutdown: 2018-05-07 19:32:47 -0400 ===
+[16396] - Goodbye!
+=== puma startup: 2018-05-07 19:47:59 -0400 ===
+[19019] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[19017] - Worker 0 (pid: 19019) booted, phase: 0
+[19017] - Gracefully shutting down workers...
+[19017] === puma shutdown: 2018-05-07 19:57:52 -0400 ===
+[19017] - Goodbye!
+=== puma startup: 2018-05-07 19:57:53 -0400 ===
+[21027] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[21023] - Worker 0 (pid: 21027) booted, phase: 0
+[21023] - Gracefully shutting down workers...
+[21023] === puma shutdown: 2018-05-07 20:00:20 -0400 ===
+[21023] - Goodbye!
+=== puma startup: 2018-05-07 20:01:27 -0400 ===
+[21663] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[21659] - Worker 0 (pid: 21663) booted, phase: 0
+[21659] - Gracefully shutting down workers...
+[21659] === puma shutdown: 2018-05-07 20:02:14 -0400 ===
+[21659] - Goodbye!
+=== puma startup: 2018-05-07 20:02:15 -0400 ===
+[21794] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[21790] - Worker 0 (pid: 21794) booted, phase: 0
+[21790] - Gracefully shutting down workers...
+[21790] === puma shutdown: 2018-05-07 20:03:28 -0400 ===
+[21790] - Goodbye!
+=== puma startup: 2018-05-07 20:03:29 -0400 ===
+[21979] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[21976] - Worker 0 (pid: 21979) booted, phase: 0
+[21976] - Gracefully shutting down workers...
+[21976] === puma shutdown: 2018-05-07 20:05:46 -0400 ===
+[21976] - Goodbye!
+=== puma startup: 2018-05-07 20:05:47 -0400 ===
+[22377] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[22373] - Worker 0 (pid: 22377) booted, phase: 0
+[22373] - Gracefully shutting down workers...
+[22373] === puma shutdown: 2018-05-07 20:10:04 -0400 ===
+[22373] - Goodbye!
+=== puma startup: 2018-05-07 20:10:17 -0400 ===
+[23034] + Gemfile in context: /media/chris/Work/projects/todo/Gemfile
+[23032] - Worker 0 (pid: 23034) booted, phase: 0

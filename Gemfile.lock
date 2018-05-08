@@ -10,6 +10,10 @@ GEM
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     equalizer (0.0.11)
+    ffi (1.9.23)
+    haml (5.0.4)
+      temple (>= 0.8.0)
+      tilt
     ice_nine (0.11.2)
     iso8601 (0.8.7)
     multi_json (1.13.1)
@@ -17,15 +21,26 @@ GEM
     rack (2.0.5)
     rack-protection (2.0.1)
       rack
+    rb-fsevent (0.10.3)
+    rb-inotify (0.9.10)
+      ffi (>= 0.5.0, < 2)
     rtasklib (0.2.4)
       iso8601 (= 0.8.7)
       multi_json (~> 1.7)
       virtus (~> 1.0)
+    sass (3.5.6)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     sinatra (2.0.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
       rack-protection (= 2.0.1)
       tilt (~> 2.0)
+    sinatra-partial (1.0.1)
+      sinatra (>= 1.4)
+    temple (0.8.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
     virtus (1.0.5)
@@ -38,8 +53,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  haml
   rtasklib
+  sass
   sinatra
+  sinatra-partial
 
 BUNDLED WITH
    1.16.1
