@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0", :name => "viewport"}
+    %link{:rel => 'stylesheet', :type => 'text/css', :href => 'https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.css '}
+    %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/styles.css'}
+
+    %title
+      = #display_title
+    %meta{:content => 'display_description', :name => "description"}
+    = #stylesheet_link_tag 'application', media: 'all'
+    = #javascript_include_tag 'application'
+    = #csrf_meta_tags
+  %body
+    = partial('layouts/navigation', template_engine: :haml)
+    = #render 'layouts/navigation'
+    %span.flash-messages
+      = #render 'layouts/messages' if messages?
+    .ui.container
+      = partial('layouts/_heading', locals: { title: 'Task Helper' }, template_engine: :haml)
+      = yield

@@ -1,0 +1,11 @@
+- title ||= nil
+.row
+  .column
+    - if title
+      .row-header
+        .ui.header
+          %h2.inline
+            = title
+        .ui.divider
+    = content
+

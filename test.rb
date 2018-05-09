@@ -11,7 +11,8 @@ class App < Sinatra::Base
   end
 
 	get '/yo' do
-    @content = "Hey there"
-    haml :index
+    @header = 'Task Helper'
+    content = partial :index
+    haml :section, locals: { content: content, title: 'Some title'  }
 	end
 end

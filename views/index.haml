@@ -1,32 +1,20 @@
-!!!
-%html
-  %head
-    %title Sinatra App
-    %link{:rel => 'stylesheet', :type => 'text/css', :href => 'https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.css '}
-    %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/styles.css'}
-  %body
-    = @content
-    %a{:href => '#'} Not special
-
-    .special
-      %a{:href => '#'} Special
-    = partial('layouts/_heading', locals: { title: 'Data Match' }, template_engine: :haml)
-    .ui.section.import
-      %table.ui.very.basic.celled.table
-        %tbody
-          %h3.ui.header.centered
-            Existing Lists
-          - [1,2,3].each do |listing|
-            %tr
-              %td
-                Add Data
-              %td
-                %h4.inline
-                  = listing.to_s
-                %span.right-float
-                  %b
-                    Rows
-              %td.centered
-                %a
-                  %i.cog.large.blue.icon
+= #partial('layouts/section', locals: { title: 'Some Title' }, template_engine: :haml)
+.ui.section.import
+  %table.ui.very.basic.celled.table
+    %tbody
+      %h3.ui.header.centered
+        Existing Lists
+      - [1,2,3].each do |listing|
+        %tr
+          %td
+            Add Data
+          %td
+            %h4.inline
+              = listing.to_s
+            %span.right-float
+              %b
+                Rows
+          %td.centered
+            %a
+              %i.cog.large.blue.icon
 
