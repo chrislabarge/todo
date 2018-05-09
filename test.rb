@@ -1,9 +1,6 @@
 require 'rtasklib'
 require 'sinatra'
 
-#tw = Rtasklib::TW.new('/usr/local/bin/task')
-
-#puts tw.methods.sort
 
 class App < Sinatra::Base
   configure do
@@ -11,8 +8,9 @@ class App < Sinatra::Base
   end
 
 	get '/yo' do
-    @header = 'Task Helper'
+    @tw = Rtasklib::TW.new('~/.task')
+    @tasks  = @tw.all
     content = partial :index
-    haml :section, locals: { content: content, title: 'Some title'  }
+    haml :section, locals: { content: content, title: 'Listing'  }
 	end
 end

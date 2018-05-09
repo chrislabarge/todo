@@ -1,20 +1,20 @@
-= #partial('layouts/section', locals: { title: 'Some Title' }, template_engine: :haml)
 .ui.section.import
   %table.ui.very.basic.celled.table
     %tbody
       %h3.ui.header.centered
-        Existing Lists
-      - [1,2,3].each do |listing|
+        Recent Tasks
+      - @tasks.each do |task|
         %tr
           %td
-            Add Data
+            Test
           %td
-            %h4.inline
-              = listing.to_s
-            %span.right-float
-              %b
-                Rows
+            = task.description
+          %td
+            = task.project
           %td.centered
-            %a
-              %i.cog.large.blue.icon
+            = task.urgency
+          %td.centered
+            - date = task.due
+            = date.strftime('%m/%d/%Y') if date
+            -# %i.cog.large.blue.icon
 
