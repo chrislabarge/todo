@@ -1,0 +1,22 @@
+.ui.section.import
+  %form.ui.form.large.user.centered{action: '/tasks/create', method: 'post'}
+    .field
+      %label{name: 'description'}
+        Description
+      %input{type: 'text', name: 'description'}
+
+    .field
+      %label{name: 'project'}
+        Project
+      %select{name: 'project'}
+        - @projects.each do |project|
+          %option{value: project, selected: @project == project}
+            = project
+    .field
+      %label{name: 'priority'}
+        Priority
+      %select{name: 'priority'}
+        - @priorities.each do |key, value|
+          %option{value: key, selected: value == 'Low'}
+            = value
+    %input.ui.positive.button.huge{type: 'submit', value: 'Create Task'}

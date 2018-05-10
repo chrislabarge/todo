@@ -1,11 +1,14 @@
-- title ||= nil
+- new ||= nil
 .row
   .column
-    - if title
-      .row-header
-        .ui.header
-          %h2.inline
-            = title
-        .ui.divider
+    .row-header
+      .ui.header.inline
+        %h2.inline
+          = @header
+      - if new
+        %a.ui.positive.button.large.right-float{href: new[:href]}
+          %i.plus.icon
+          = new[:name]
+      .ui.divider
     = content
 

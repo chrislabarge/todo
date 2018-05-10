@@ -2,29 +2,34 @@
   %table.ui.very.basic.celled.table
     %tbody
       %h3.ui.header.centered
-        Recent Tasks
+        = @title
       - @tasks.each do |task|
         %tr
-          %td
+          %td.centered
             - if task.status == 'completed'
               %form{href: "/status?id=#{ task.id }&status=pending", method: 'post'}
+                - puts task.id
                 %input{type: 'submit', value: task.id}
                   Done
             -else
-              %form{href: "/done?id=#{ task.id }", method: 'post'}
-                %input{type: 'submit', value: task.id}
-                  Done
+              %form{action: "/done", method: 'post'}
+                %input{type: 'hidden', value: task.id, name: 'id' }
+                %input{type: 'hidden', value: @project, name: 'project' }
+                %input.ui.positive.button{type: 'submit', value: 'Done'}
           %td
             = task.description
-          %td
-            = task.project
+          - if @project == nil
+            %td
+              = task.project
           %td.centered
-            = task.urgency
+            = @priorities[task.priority]
           %td.centered
             - date = task.due
-            = date.strftime('%m/%d/%Y') if date
-            -# %i.cog.large.blue.icon
-          %td.centered
-            = task.status
+            - if date
+              = date.strftime('%m/%d/%Y')
+            - else
+              No Due Date
+
+
 
 

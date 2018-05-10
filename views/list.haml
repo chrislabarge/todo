@@ -1,0 +1,18 @@
+.ui.section.import
+  %table.ui.very.basic.celled.table
+    %tbody
+      %h3.ui.header.centered
+        = @title
+      - @items.each do |item|
+        %tr
+          %td.centered
+            %a{href: '/tasks?project=' + item}
+              %h4.inline
+                = item
+            %span
+              - item = nil if item == 'Unassigned'
+              = "Tasks(#{@tw.some(dom: {project: item}).count})"
+
+
+
+
