@@ -6,7 +6,14 @@
       - @tasks.each do |task|
         %tr
           %td
-            Test
+            - if task.status == 'completed'
+              %form{href: "/status?id=#{ task.id }&status=pending", method: 'post'}
+                %input{type: 'submit', value: task.id}
+                  Done
+            -else
+              %form{href: "/done?id=#{ task.id }", method: 'post'}
+                %input{type: 'submit', value: task.id}
+                  Done
           %td
             = task.description
           %td
@@ -17,4 +24,7 @@
             - date = task.due
             = date.strftime('%m/%d/%Y') if date
             -# %i.cog.large.blue.icon
+          %td.centered
+            = task.status
+
 
