@@ -15,7 +15,7 @@
               %form{action: "/done", method: 'post'}
                 %input{type: 'hidden', value: task.id, name: 'id' }
                 %input{type: 'hidden', value: @project, name: 'project' }
-                %input.ui.positive.button{type: 'submit', value: 'Done'}
+                %input.ui.primary.button{type: 'submit', value: 'Done'}
           %td
             = task.description
           - if @project == nil
