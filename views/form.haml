@@ -5,13 +5,24 @@
         Description
       %input{type: 'text', name: 'description'}
 
-    .field
+    .field#projectSelect
       %label{name: 'project'}
         Project
       %select{name: 'project'}
         - @projects.each do |project|
           %option{value: project, selected: @project == project}
             = project
+      %span.field-divider
+        or
+      %span.ui.checkbox
+        %input{type: 'checkbox', onclick: "firmInputToggle();"}
+        %label
+          Start New Project
+    .field#newProject{disabled: true, style: "display: none"}
+      %label{name: 'project', disabled: true, style: "display: none"}
+        Project Name
+      %input{type: 'text', name: 'project', disabled: true, style: "display: none"}
+
     .field
       %label{name: 'priority'}
         Priority
