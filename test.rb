@@ -29,9 +29,9 @@ class App < Sinatra::Base
                 else
                   @project
                 end
-      @tw.some(dom: {project: project})
+      @tw.some(dom: {project: project}).sort_by(&:urgency).reverse
     else
-      @tw.all
+      @tw.all.sort_by(&:urgency).reverse
     end
   end
 
@@ -98,8 +98,8 @@ class App < Sinatra::Base
     puts description
     due = params[:due_date] || nil
     priority = params[:priority] || 'L'
-    project = params[:project] || nil
-    project = nil if project == 'Unassigned'
+    project = "'#{params[:project]}'" || nil
+    project = nil if project == "'Unassigned'"
 
     [:description, :due, :priority, :project].each do  |attr|
       @tw.modify!(attr, eval(attr.to_s), ids: id)
@@ -118,8 +118,8 @@ class App < Sinatra::Base
     description = params[:description]
     due_date = params[:due_date] || nil
     priority = params[:priority] || 'L'
-    project = params[:project] || nil
-    project = nil if project == 'Unassigned'
+    project = "'#{params[:project]}'" || nil
+    project = nil if project == "'Unassigned'"
     @tw.add!(description, dom: {due: due_date, project: project, priority: priority})
     redirect '/', 302
   end

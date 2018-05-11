@@ -1,5 +1,5 @@
 .ui.section.import
-  %table.ui.very.basic.celled.table
+  %table.ui.very.basic.celled.table.unstackable
     %tbody
       %h3.ui.header.centered
         = @title
@@ -13,9 +13,10 @@
             -else
               %form{action: "/tasks/done/#{task.id}", method: 'post'}
                 %input{type: 'hidden', value: @project, name: 'project' }
-                %button.ui.primary.button{type: 'submit'}
-                  %i.ui.check.icon
-                  Done
+                %input.hidden{type: 'submit'}
+                %a.submit
+                  %i.check.circle.outline.green.large.icon
+
           %td
             = task.description
           - if @project == nil
@@ -23,7 +24,7 @@
               = task.project
           %td.centered
             = @priorities[task.priority]
-          %td.centered
+          %td.centered.mobile-hidden
             - date = task.due
             - if date
               = date.strftime('%m/%d/%Y')
@@ -45,9 +46,9 @@
                   Edit Task
                 %form.item{action: "/tasks/remove/#{task.id}", method: 'post'}
                   %input.hidden{type: 'submit'}
-                    %span.submit
-                      %i.trash.blue.icon
-                      Remove Task
+                  %span.submit
+                    %i.trash.blue.icon
+                    Remove Task
 
 
 
