@@ -17,13 +17,11 @@
                 %a.submit
                   %i.check.circle.outline.green.large.icon
 
-          %td
+          %td{class: @priorities[task.priority].to_s.downcase}
             = task.description
           - if @project == nil
             %td.centered
               = task.project
-          %td.centered
-            = @priorities[task.priority]
           %td.centered.mobile-hidden
             - date = task.due
             - if date
