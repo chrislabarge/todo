@@ -42,7 +42,7 @@
                 %a.item{href: "tasks/edit/#{task.id}"}
                   %i.pencil.blue.icon
                   Edit Task
-                %form.item{action: "/tasks/remove/#{task.id}", method: 'post'}
+                %form.item{action: "/tasks/remove/#{task.id}", method: 'post', 'onSubmit' => "return confirm('Are you sure you wish to delete?');"}
                   %input.hidden{type: 'submit'}
                   %span.submit
                     %i.trash.blue.icon
