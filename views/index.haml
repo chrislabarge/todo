@@ -20,7 +20,7 @@
           %td{class: @priorities[task.priority].to_s.downcase}
             = task.description
           - if @project == nil
-            %td.centered
+            %td.centered.mobile-hidden
               = task.project
           %td.centered.mobile-hidden
             - date = task.due
