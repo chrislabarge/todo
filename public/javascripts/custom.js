@@ -1,5 +1,9 @@
 window.onload = function(){
   $('.ui.dropdown').dropdown()
+
+  $('.submit').click(function() {
+    $(this).parent().submit();
+  });
 }
 
 function firmInputToggle() {

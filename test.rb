@@ -35,7 +35,7 @@ class App < Sinatra::Base
     end
   end
 
-  post '/done' do
+  post '/tasks/done/:id' do
     id = params[:id]
     project = params[:project]
     @tw.done!(ids: id)
@@ -49,9 +49,15 @@ class App < Sinatra::Base
     @tw.modify!('status', 'completed', ids: id)
   end
 
+  post '/retask' do
+    id = params[:id]
+    system("task #{id} modify status:pending")
+    redirect '/done', 302
+  end
+
   get '/done' do
     @title = 'Completed Tasks'
-    @tasks = @tw.some(dom: {status: 'completed' }, active: false)
+    @tasks = @tw.some(dom: {status: 'completed' }, active: false).sort_by(&:end).reverse
     @header = 'Listing'
     @priorities = priority_key
     content = partial :index
@@ -59,12 +65,47 @@ class App < Sinatra::Base
   end
 
   get '/tasks/new' do
+    @action = '/tasks/create'
     @projects = format_for_view(projects)
     @project = params[:project]
     @priorities = priority_key
+    @priority = 'L'
+    @description = ''
     @header = 'New Task'
+    @submit = 'Create Task'
     content = partial :form
     haml :section, locals: { content: content }
+  end
+
+  get '/tasks/edit/:id' do
+    id = params[:id]
+    task = @tw.some(ids: id).first
+    @action = "/tasks/update/#{id}"
+    @projects = format_for_view(projects)
+    @project = task.project
+    @priorities = priority_key
+    @priority = task.priority
+    @description = task.description
+    @header = 'New Task'
+    @submit = 'Update Task'
+    content = partial :form
+    haml :section, locals: { content: content }
+  end
+
+  post '/tasks/update/:id' do
+    id = params[:id]
+    description = "'#{params[:description]}'"
+    puts description
+    due = params[:due_date] || nil
+    priority = params[:priority] || 'L'
+    project = params[:project] || nil
+    project = nil if project == 'Unassigned'
+
+    [:description, :due, :priority, :project].each do  |attr|
+      @tw.modify!(attr, eval(attr.to_s), ids: id)
+    end
+
+    redirect '/tasks', 302
   end
 
   def format_for_view(projects)
@@ -89,6 +130,12 @@ class App < Sinatra::Base
     @header = 'Listing'
     content = partial :list
     haml :section, locals: { content: content  }
+  end
+
+  post '/tasks/remove/:id' do
+    id = params[:id]
+    @tw.delete!(ids: id)
+    redirect '/tasks', 302
   end
 
   def load_task_warrior

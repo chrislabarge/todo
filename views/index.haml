@@ -7,19 +7,19 @@
         %tr
           %td.centered
             - if task.status == 'completed'
-              %form{href: "/status?id=#{ task.id }&status=pending", method: 'post'}
-                - puts task.id
-                %input{type: 'submit', value: task.id}
-                  Done
+              %span
+                %i.ui.check.green.icon
+                = task.end.strftime('%m/%d/%Y')
             -else
-              %form{action: "/done", method: 'post'}
-                %input{type: 'hidden', value: task.id, name: 'id' }
+              %form{action: "/tasks/done/#{task.id}", method: 'post'}
                 %input{type: 'hidden', value: @project, name: 'project' }
-                %input.ui.primary.button{type: 'submit', value: 'Done'}
+                %button.ui.primary.button{type: 'submit'}
+                  %i.ui.check.icon
+                  Done
           %td
             = task.description
           - if @project == nil
-            %td
+            %td.centered
               = task.project
           %td.centered
             = @priorities[task.priority]
@@ -29,6 +29,25 @@
               = date.strftime('%m/%d/%Y')
             - else
               No Due Date
+          %td.centered
+            .ui.dropdown
+              %i.cog.large.blue.icon
+              .menu
+                - if task.status == 'completed'
+                  %form.item{action: "/retask", method: 'post'}
+                    %input.hidden{name: 'id', type: 'hidden', value: task.uuid}
+                    %input.hidden{type: 'submit'}
+                      %span.submit
+                        %i.redo.blue.icon
+                        Re-Task
+                %a.item{href: "tasks/edit/#{task.id}"}
+                  %i.pencil.blue.icon
+                  Edit Task
+                %form.item{action: "/tasks/remove/#{task.id}", method: 'post'}
+                  %input.hidden{type: 'submit'}
+                    %span.submit
+                      %i.trash.blue.icon
+                      Remove Task
 
 
 
