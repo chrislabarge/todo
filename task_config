@@ -1,0 +1,7 @@
+#These are the config user customizations for home tasks
+
+task config uda.price.type numeric
+#there is a confirmation prompt for both of these...
+task config uda.price.label Price
+
+task uda.price.default=0.00

@@ -22,16 +22,19 @@
           - if @project == nil
             %td.centered.mobile-hidden
               = task.project
-          %td.centered.mobile-hidden
-            - date = task.due
-            - if date
-              = date.strftime('%m/%d/%Y')
+          %td.centered{class: task.project == 'Shopping' ? '' : 'mobile-hidden'}
+            - if task.project == 'Shopping'
+              = '$' + ( task.price || 0 )
             - else
-              No Due Date
+              - date = task.due
+              - if date
+                = date.strftime('%m/%d/%Y')
+              - else
+                No Due Date
           %td.centered
             .ui.dropdown
-              %i.cog.large.blue.icon
-              .menu
+              %i.ellipsis.horizontal.large.blue.icon
+              .left.menu
                 - if task.status == 'completed'
                   %form.item{action: "/retask", method: 'post'}
                     %input.hidden{name: 'id', type: 'hidden', value: task.uuid}
@@ -39,6 +42,9 @@
                       %span.submit
                         %i.redo.blue.icon
                         Re-Task
+                %a.item{href: "tasks/#{task.id}"}
+                  %i.info.blue.icon
+                  More Info
                 %a.item{href: "tasks/edit/#{task.id}"}
                   %i.pencil.blue.icon
                   Edit Task

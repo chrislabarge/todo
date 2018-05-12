@@ -29,4 +29,8 @@
         - @priorities.each do |key, value|
           %option{value: key, selected: @priority == key}
             = value
+    .field
+      %label{name: 'price'}
+        Price
+      %input{type: 'text', name: 'price', value: @price}
     %input.ui.positive.button.huge{type: 'submit', value: @submit}

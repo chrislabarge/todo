@@ -1,0 +1,14 @@
+.ui.section.import
+  %table.ui.very.basic.celled.table.unstackable
+    %tbody
+      %h3.ui.header.centered
+        = @title
+      - @display_attributes.each do |attr|
+        - if ( value = @model.send(attr) )
+          %tr
+            %td
+              %b
+                - title = attr.to_s
+                - title[0] = title[0].upcase
+                = title + ': '
+              = value.to_s

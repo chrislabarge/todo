@@ -35,6 +35,19 @@ class App < Sinatra::Base
     end
   end
 
+ def display_attributes
+    [
+      :description,
+      :project,
+      :price,
+      :status,
+      :due,
+      :priority,
+      :end,
+      :modified
+    ]
+  end
+
   post '/tasks/done/:id' do
     id = params[:id]
     project = params[:project]
@@ -71,6 +84,7 @@ class App < Sinatra::Base
     @priorities = priority_key
     @priority = 'L'
     @description = ''
+    @price =  nil
     @header = 'New Task'
     @submit = 'Create Task'
     content = partial :form
@@ -85,6 +99,7 @@ class App < Sinatra::Base
     @project = task.project
     @priorities = priority_key
     @priority = task.priority
+    @price = task.price
     @description = task.description
     @header = 'New Task'
     @submit = 'Update Task'
@@ -95,13 +110,13 @@ class App < Sinatra::Base
   post '/tasks/update/:id' do
     id = params[:id]
     description = "'#{params[:description]}'"
-    puts description
     due = params[:due_date] || nil
     priority = params[:priority] || 'L'
     project = "'#{params[:project]}'" || nil
     project = nil if project == "'Unassigned'"
+    price = params[:price]
 
-    [:description, :due, :priority, :project].each do  |attr|
+    [:description, :due, :priority, :project, :price].each do  |attr|
       @tw.modify!(attr, eval(attr.to_s), ids: id)
     end
 
@@ -120,7 +135,8 @@ class App < Sinatra::Base
     priority = params[:priority] || 'L'
     project = "'#{params[:project]}'" || nil
     project = nil if project == "'Unassigned'"
-    @tw.add!(description, dom: {due: due_date, project: project, priority: priority})
+    price = params[:price]
+    @tw.add!(description, dom: {due: due_date, project: project, priority: priority, price: price})
     redirect '/', 302
   end
 
@@ -136,6 +152,16 @@ class App < Sinatra::Base
     id = params[:id]
     @tw.delete!(ids: id)
     redirect '/tasks', 302
+  end
+
+  get '/tasks/:id' do
+    id = params[:id]
+    @model = @tw.some(ids: id).first
+    @display_attributes = display_attributes
+    @header = 'Task Information'
+
+    content = partial 'tasks/show'
+    haml :section, locals: { content: content }
   end
 
   def load_task_warrior
