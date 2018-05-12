@@ -24,7 +24,7 @@
               = task.project
           %td.centered{class: task.project == 'Shopping' ? '' : 'mobile-hidden'}
             - if task.project == 'Shopping'
-              = '$' + ( task.price || 0 )
+              = '$' + ( task.price || 0 ).to_s
             - else
               - date = task.due
               - if date
