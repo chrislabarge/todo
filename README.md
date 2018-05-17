@@ -9,3 +9,9 @@ This is a simple little web server that uses the Task Warrior CLI as a backend. 
 - [Rtasklib gem](https://github.com/dropofwill/rtasklib)
 - [Task Warrior](https://taskwarrior.org/)
 - [Semantic UI](https://semantic-ui.com/)
+
+## Author
+
+ Website: [ChrisLaBarge.com](http://chrislabarge.com)
+
+ Github: [github.com/chrislabarge](https://github.com/chrislabarge)
