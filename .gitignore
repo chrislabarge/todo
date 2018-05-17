@@ -1,2 +1,4 @@
 shared/*
 .sass-cache/*
+config/*
+
