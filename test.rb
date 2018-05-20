@@ -52,7 +52,7 @@ class App < Sinatra::Base
     id = params[:id]
     project = params[:project]
     @tw.done!(ids: id)
-    path = project == 'nil' ? '/' : '/tasks?project=' + project
+    path = (project == 'nil' || project == nil || project == '') ? '/' : '/tasks?project=' + project
     redirect path, 302
   end
 
@@ -79,6 +79,7 @@ class App < Sinatra::Base
 
   get '/tasks/new' do
     @action = '/tasks/create'
+    @shopping_items = format_shopping_items
     @projects = format_for_view(projects)
     @project = params[:project]
     @priorities = priority_key
@@ -89,6 +90,19 @@ class App < Sinatra::Base
     @submit = 'Create Task'
     content = partial :form
     haml :section, locals: { content: content }
+  end
+
+  get '/test/' do
+    content_type :json
+    format_shopping_items
+  end
+
+  def format_shopping_items
+    tasks = @tw.some(dom: { project:'Shopping' }, active: false)
+
+   tasks.map do |task|
+                {title: task.description, price: task.price, project: task.project}
+   end.to_json
   end
 
   get '/tasks/edit/:id' do
@@ -169,12 +183,16 @@ class App < Sinatra::Base
   end
 
   def projects
-    projects = @tw.all(active: false).map(&:project).uniq
+    @tw.all(active: false).map(&:project).uniq
   end
 
   def priority_key
     {'H' => 'High',
      'M' => 'Medium',
      'L' => 'Low'}
+  end
+
+  def shopping_tasks
+    @tw.some(dom: { project: 'Shopping' }, active: false)
   end
 end

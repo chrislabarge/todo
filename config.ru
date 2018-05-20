@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'haml'
 require 'sinatra/partial'
+require 'json'
 require 'sass/plugin/rack'
 #require "sprockets"
 #require "sprockets-sass"

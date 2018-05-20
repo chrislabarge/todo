@@ -3,7 +3,10 @@
     .field
       %label{name: 'description'}
         Description
-      %input{type: 'text', name: 'description', value: @description}
+      .ui.search.places
+        .ui.large.icon.input
+          %input.prompt{type: 'text', name: 'description', value: @description}
+          %i.icon.link
     .field#projectSelect
       %label{name: 'project'}
         Project
@@ -34,3 +37,13 @@
         Price
       %input{type: 'text', name: 'price', value: @price}
     %input.ui.positive.button.huge{type: 'submit', value: @submit}
+:javascript
+  $('.ui.search').search({
+    source:  JSON.parse('#{@shopping_items}'),
+      onSelect: function(result) {
+        $('input[name="description"]').val(result.title)
+        $('input[name="price"]').val(result.price)
+        $('select[name="project"]').val(result.project)
+      },
+    minCharacters : 1
+  });

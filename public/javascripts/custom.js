@@ -4,6 +4,7 @@ window.onload = function(){
   $('.submit').click(function() {
     $(this).parent().submit();
   });
+
 }
 
 function firmInputToggle() {
@@ -21,6 +22,5 @@ function toggleElement(e) {
     } else {
         e.prop('disabled', true)
     }
-
     e.toggle()
 }

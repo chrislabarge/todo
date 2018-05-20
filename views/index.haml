@@ -5,7 +5,7 @@
         = @title
       - @tasks.each do |task|
         %tr
-          %td.centered
+          %td.centered{class: @title != 'Completed Tasks' ? 'check' : ''}
             - if task.status == 'completed'
               %span
                 %i.ui.check.green.icon
@@ -22,7 +22,7 @@
           - if @project == nil
             %td.centered.mobile-hidden
               = task.project
-          %td.centered{class: task.project == 'Shopping' ? '' : 'mobile-hidden'}
+          %td.centered{class: @project == 'Shopping' ? '' : 'mobile-hidden'}
             - if task.project == 'Shopping'
               = '$' + ( task.price || 0 ).to_s
             - else
