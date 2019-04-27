@@ -26,6 +26,11 @@
       %input{type: 'text', name: 'project', disabled: true, style: "display: none"}
 
     .field
+      #example2.ui.calendar
+        .ui.input.left.icon
+          %i.calendar.icon
+          %input{:placeholder => "Date/Time", :type => "text"}/
+    .field
       %label{name: 'priority'}
         Priority
       %select{name: 'priority'}

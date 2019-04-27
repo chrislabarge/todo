@@ -157,7 +157,7 @@ class App < Sinatra::Base
   get '/projects' do
     @items = format_for_view projects
     @title = 'Projects'
-    @header = 'Listing'
+    @header = 'Projects'
     content = partial :list
     haml :section, locals: { content: content  }
   end

@@ -64,7 +64,17 @@ td.check {
 }
 
 .ui.section {
+  padding: 0 20px;
   margin-bottom: 38px;
+}
+
+.ui.section {
+  .middle.aligned.divided.list {
+    .item {
+      padding: 15px 0;
+    }
+  }
+
 }
 
 .add-user {
@@ -126,7 +136,7 @@ table tbody tr {
 
   table tr {
     td:first-child {
-      width: 140px;
+      width: 80px;
     }
 
     td:last-child {

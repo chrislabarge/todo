@@ -5,6 +5,9 @@ window.onload = function(){
     $(this).parent().submit();
   });
 
+  $('#example2').calendar({
+    type: 'date'
+  });
 }
 
 function firmInputToggle() {

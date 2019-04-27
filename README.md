@@ -10,6 +10,12 @@ This is a simple little web server that uses the Task Warrior CLI as a backend. 
 - [Task Warrior](https://taskwarrior.org/)
 - [Semantic UI](https://semantic-ui.com/)
 
+##Develop
+```bash
+bundle install
+rackup config.ru
+```
+
 ## Author
 
  Website: [ChrisLaBarge.com](http://chrislabarge.com)

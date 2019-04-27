@@ -1,17 +1,15 @@
 .ui.section.import
-  %table.ui.very.basic.celled.table
-    %tbody
-      %h3.ui.header.centered
-        = @title
-      - @items.each do |item|
-        %tr
-          %td.centered
+  .ui.middle.aligned.divided.list
+    - @items.each do |item|
+      .item
+        .content
+          .left.floated
             %a{href: '/tasks?project=' + item}
               %h4.inline
                 = item
-            %span
-              - item = nil if item == 'Unassigned'
-              = "Tasks(#{@tw.some(dom: {project: item}).count})"
+          .right.floated
+            - item = nil if item == 'Unassigned'
+            = "Tasks(#{@tw.some(dom: {project: item}).count})"
 
 
 
